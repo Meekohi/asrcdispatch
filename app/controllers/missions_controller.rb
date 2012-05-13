@@ -10,17 +10,6 @@ class MissionsController < ApplicationController
     end
   end
 
-  # GET /missions/1
-  # GET /missions/1.json
-  def show
-    @mission = Mission.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @mission }
-    end
-  end
-
   # GET /missions/new
   # GET /missions/new.json
   def new
@@ -44,7 +33,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to @mission, :notice => 'Mission was successfully created.' }
+        format.html { redirect_to :root, :notice => 'Mission was successfully created.' }
         format.json { render :json => @mission, :status => :created, :location => @mission }
       else
         format.html { render :action => "new" }
@@ -60,7 +49,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.update_attributes(params[:mission])
-        format.html { redirect_to @mission, :notice => 'Mission was successfully updated.' }
+        format.html { redirect_to :root, :notice => 'Mission was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

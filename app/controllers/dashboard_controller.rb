@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    @groups = Group.all
-    @missions = Mission.all
+    @groups = Group.order("shortname")
+    @missions = Mission.all    
   end
 end

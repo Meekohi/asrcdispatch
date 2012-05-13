@@ -16,12 +16,12 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label :status %> <em>(To close a mission, set to 44#)</em><br />
     <%= f.number_field :status %>
   </div>
   <div class="field">
     <%= f.label :information %><br />
-    <%= f.text_area :information %>
+    <%= f.text_area :information, :size => "60x30" %>
   </div>
   <div class="actions">
     <%= f.submit %>

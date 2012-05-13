@@ -1,5 +1,16 @@
 <h1>New mission</h1>
 
+<script>
+$(document).ready(function(){
+	$("#mission_information").val("BASICS\nMission ID:\nCounty, State:\nNearest Town:\nMission start date:\n\n" + 
+	"SUBJECT INFORMATION\nName:\nAge:\nGender:\nTime Last Seen:\nHistory:\n\n" +
+	"BASE\nLocation:\nPhone:\nDirections to Base:\n\n" +
+	"RESPONSIBLE AGENT\nName:\nTitle:\nAgency:\nContact:\n\n" +
+	"ASRC\nAgency Rep (AR):\nAlert Officer (AO):\n\n" +
+	"OTHER\n");
+});
+</script>
+
 <%= render 'form' %>
 
-<%= link_to 'Back', missions_path %>
+<%= link_to 'List of all missions', missions_path %>

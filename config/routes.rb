@@ -2,14 +2,17 @@ Asrcdispatch::Application.routes.draw do
     
   root :to => "dashboard#index"
 
-  resources :missions
+  resources :missions, :except => :show
 
+  get 'responders/autocomplete'
   resources :responders
 
   resources :groups do
-    resource :dispatcher
+    resource :dispatcher, :except => :show
     put 'close'
   end
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

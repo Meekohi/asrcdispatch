@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
+	<script>
+	$(document).ready(function(){
+		$("#dispatcher_name").autocomplete({source: "/responders/autocomplete"})
+	});
+	</script>
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+	<%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :phone %><br />

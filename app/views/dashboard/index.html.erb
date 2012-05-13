@@ -1,22 +1,34 @@
-<h1>Dispatch</h1>
+<div class='header'>
+	<div><%= image_tag 'asrclogo.gif', :height=>"64px"%> <h1 style='display:inline-block; vertical-align:middle;'>ASRC Dispatch</h1></div>
+</div>
 
+
+<script>
+	$(document).ready(function(){
+		$("table tr:even").addClass("odd");
+	});
+</script>
+
+<%= flash[:notice] %>
 <table>
   <tr>
     <th>Group</th>
     <th>Dispatcher</th>
+	<th></th>
   </tr>
 
 
 <% @groups.each do |group| %>
   <tr>
-    <td><%= group.shortname %></td>
+    <td class='group_shortname'><%= group.shortname %></td>
 
 	<% if group.dispatcher %>
-		<td><%= group.dispatcher.name %>, <%= tel_to group.dispatcher.phone %>, <%= mail_to group.dispatcher.email %><br/>
+		<td><%= group.dispatcher.name %>, <%= tel_to number_to_phone(group.dispatcher.phone) %>, <%= mail_to group.dispatcher.email %><br/>
 		<em>last updated: <%= time_ago_in_words(group.dispatcher.updated_at) %> ago.</em></td>
-	    <td><%= link_to 'Close Dispatch', group_close_path(group), :confirm => "Close #{group.shortname} dispatch?", :method => :put %></td>
+	    <td><%= link_to 'Close Dispatch', group_close_path(group), :confirm => "Close #{group.shortname} dispatch?", :method => :put %><br/>
+			<%= link_to 'New Dispatcher', new_group_dispatcher_path(group) %></td>
 	<% else %>
-		Dispatch is closed.
+		<td>Dispatch is closed.</td>
 		<td><%= link_to 'Open Dispatch', new_group_dispatcher_path(group) %></td>
 	    
 	<% end %>
@@ -25,10 +37,22 @@
 </table>
 
 <br />
-<h2>Active Missions<h2/>
+<div class='header'>
+	<div><%= image_tag 'asrclogo.gif', :height=>"64px"%> <h1 style='display:inline-block; vertical-align:middle;'>Active Missions</h1>
+		<div style='position:relative; top:-15px; left:70px;'><em><%= link_to 'create new mission', new_mission_path %></em></div>
+	</div>
+</div>
+	
 	
 <% @missions.each do |mission| %>
+	<hr/>
+	<div style='padding:10px; position:relative;' class="mission">
 	<h2><%= mission.status %> - <%= mission.location %></h2>
-	<p><%= mission.information %></p>
+	<div style='position:relative; top:-15px; left: 65px;'><em><%= link_to 'update mission', edit_mission_path(mission) %></em></div>
+	
+	<% info = mission.information.gsub(/^[A-Z ]*\b/,'<b>\0</b>') %>
+	<div class='missioninfo'><%= simple_format(info) %></div>
+	</div>
+
 <% end %>
 

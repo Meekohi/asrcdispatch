@@ -1,9 +1,7 @@
-class DispatchersController < ApplicationController
+class DispatchersController < ApplicationController  
   # GET /dispatchers
   # GET /dispatchers.json
   def index
-    @dispatchers = Dispatcher.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @dispatchers }
@@ -25,7 +23,7 @@ class DispatchersController < ApplicationController
   # GET /dispatchers/new.json
   def new
     @group = Group.find(params[:group_id])
-    @dispatcher = Dispatcher.new  
+    @dispatcher = Dispatcher.new
 
     respond_to do |format|
       format.html # new.html.erb

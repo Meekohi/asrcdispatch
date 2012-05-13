@@ -1,4 +1,4 @@
-class RespondersController < ApplicationController
+class RespondersController < ApplicationController    
   # GET /responders
   # GET /responders.json
   def index
@@ -8,6 +8,11 @@ class RespondersController < ApplicationController
       format.html # index.html.erb
       format.json { render :json => @responders }
     end
+  end
+  
+  def autocomplete
+    @responders = Responder.where("lastname LIKE '#{params[:term]}%' OR firstname LIKE '#{params[:term]}%'")
+    render :json => @responders.map{|r| r.name}
   end
 
   # GET /responders/1
