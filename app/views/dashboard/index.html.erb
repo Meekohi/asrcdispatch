@@ -4,18 +4,22 @@
   <tr>
     <th>Group</th>
     <th>Dispatcher</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
+
 
 <% @groups.each do |group| %>
   <tr>
     <td><%= group.shortname %></td>
-    <td> todo </td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
+
+	<% if group.dispatcher %>
+		<td><%= group.dispatcher.name %>, <%= tel_to group.dispatcher.phone %>, <%= mail_to group.dispatcher.email %><br/>
+		<em>last updated: <%= time_ago_in_words(group.dispatcher.updated_at) %> ago.</em></td>
+	    <td><%= link_to 'Close Dispatch', group_close_path(group), :confirm => "Close #{group.shortname} dispatch?", :method => :put %></td>
+	<% else %>
+		Dispatch is closed.
+		<td><%= link_to 'Open Dispatch', new_group_dispatcher_path(group) %></td>
+	    
+	<% end %>
   </tr>
 <% end %>
 </table>

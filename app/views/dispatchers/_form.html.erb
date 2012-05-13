@@ -1,0 +1,30 @@
+<%= form_for [@group, @dispatcher], :url => group_dispatcher_path do |f| %>
+  <% if @dispatcher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dispatcher.errors.count, "error") %> prohibited this dispatcher from being saved:</h2>
+
+      <ul>
+      <% @dispatcher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.phone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

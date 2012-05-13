@@ -1,0 +1,21 @@
+<h1>Listing dispatchers</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dispatchers.each do |dispatcher| %>
+  <tr>
+    <td><%= link_to 'Show', dispatcher %></td>
+    <td><%= link_to 'Edit', edit_dispatcher_path(dispatcher) %></td>
+    <td><%= link_to 'Destroy', dispatcher, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dispatcher', new_dispatcher_path %>

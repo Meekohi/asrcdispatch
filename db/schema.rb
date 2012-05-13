@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513054240) do
+ActiveRecord::Schema.define(:version => 20120513130046) do
+
+  create_table "dispatchers", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "group_id"
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "fullname"

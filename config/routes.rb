@@ -6,7 +6,10 @@ Asrcdispatch::Application.routes.draw do
 
   resources :responders
 
-  resources :groups
+  resources :groups do
+    resource :dispatcher
+    put 'close'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

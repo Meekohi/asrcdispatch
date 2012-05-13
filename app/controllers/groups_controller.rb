@@ -52,6 +52,13 @@ class GroupsController < ApplicationController
       end
     end
   end
+  
+  # PUT /groups/1/close
+  def close
+    @group = Group.find(params[:group_id])
+    @group.dispatcher.destroy;
+    redirect_to :root
+  end
 
   # PUT /groups/1
   # PUT /groups/1.json
