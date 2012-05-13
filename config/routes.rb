@@ -1,4 +1,7 @@
 Asrcdispatch::Application.routes.draw do
+    
+  root :to => "dashboard#index"
+
   resources :missions
 
   resources :responders

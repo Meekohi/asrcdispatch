@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513051535) do
+ActiveRecord::Schema.define(:version => 20120513054240) do
 
   create_table "groups", :force => true do |t|
     t.string   "fullname"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20120513051535) do
     t.integer  "responder_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "missions", :force => true do |t|
+    t.string   "location"
+    t.integer  "status"
+    t.text     "information"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "responders", :force => true do |t|

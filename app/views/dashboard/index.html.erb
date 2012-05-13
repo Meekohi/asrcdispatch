@@ -1,0 +1,30 @@
+<h1>Dispatch</h1>
+
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Dispatcher</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= group.shortname %></td>
+    <td> todo </td>
+    <td><%= link_to 'Show', group %></td>
+    <td><%= link_to 'Edit', edit_group_path(group) %></td>
+    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<h2>Active Missions<h2/>
+	
+<% @missions.each do |mission| %>
+	<h2><%= mission.status %> - <%= mission.location %></h2>
+	<p><%= mission.information %></p>
+<% end %>
+
