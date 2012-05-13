@@ -1,4 +1,6 @@
 Asrcdispatch::Application.routes.draw do
+  resources :responders
+
   resources :groups
 
   # The priority is based upon order of creation:

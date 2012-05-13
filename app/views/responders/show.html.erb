@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @responder.firstname %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%= @responder.lastname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @responder.email %>
+</p>
+
+<p>
+  <b>Homephone:</b>
+  <%= @responder.homephone %>
+</p>
+
+<p>
+  <b>Cellphone:</b>
+  <%= @responder.cellphone %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @responder.address %>
+</p>
+
+
+<%= link_to 'Edit', edit_responder_path(@responder) %> |
+<%= link_to 'Back', responders_path %>
