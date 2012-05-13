@@ -1,4 +1,6 @@
 Asrcdispatch::Application.routes.draw do
+  resources :missions
+
   resources :responders
 
   resources :groups
