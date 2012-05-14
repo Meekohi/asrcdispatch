@@ -1,19 +1,13 @@
 <h1>Listing missions</h1>
 
 <table>
-  <tr>
-    <th>Location</th>
-    <th>Status</th>
-    <th>Information</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @missions.each do |mission| %>
   <tr>
-    <td><%= mission.location %></td>
-    <td><%= mission.status %></td>
+    <td><b>Location:</b> <%= mission.location %><br/>
+		<b>Created:</b> <%= mission.created_at %><br/>
+		<b>Last Updated:</b> <%= time_ago_in_words(mission.updated_at) %> ago<br/>
+		<b>Status:</b> <%= mission.status %></td>
     <td><%= simple_format(mission.information) %></td>
     <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
     <td><%= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete %></td>
